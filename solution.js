@@ -1,17 +1,20 @@
-const breeds = []
+//global variable to store whatever breeds we will need to display on the DOM
+const breeds = [];
 
+//this event triggers when the page loads
 document.addEventListener('DOMContentLoaded', function(){
     fetchImages()
+    fetchBreeds()
 })
-// Problem #1
 
+// Challenge 1
 function fetchImages() {
     const imgUrl = "https://dog.ceo/api/breeds/image/random/2"
 
     fetch(imgUrl)
     .then(resp => resp.json())
     .then(data => {
-        // first thing you always want to print the data
+        // first thing you always want to print the data!
         console.log(data)
 
         data.message.forEach(url => {
@@ -22,7 +25,7 @@ function fetchImages() {
     })
 
 }
-// Problem #2
+// Problem #2 & #3
 function fetchBreeds() {
     const breedUrl = 'https://dog.ceo/api/breeds/list/all'
     fetch(breedUrl)
@@ -39,9 +42,9 @@ function fetchBreeds() {
             const li = document.createElement('li')
             li.textContent = breed;
 
-            li.addEventListener('click', function(e) {
-                e.target.style.color = 'pink'
-                // li.style.color = 'pink'
+            li.addEventListener('click', function() {
+                // e.target.style.color = 'pink'
+                li.style.color = 'pink'
                 // this.style.color = 'orange'
             })
             // slap the li;s onto the <ul> that is on the DOM!
